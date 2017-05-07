@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Parsedown;
 
 class News extends Model
 {
@@ -25,4 +26,18 @@ class News extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
+    /**
+    *  удаляем опасный код
+    */
+    public function setContentAttribute($value){
+        $this->attributes['content'] = clean($value);
+    }
+
+    /**
+     * преобразуем markdown в html
+     */
+    public function getMarkdownContentAttribute() {
+        return (new Parsedown)->text($this->attributes['content']);
+    }
+
 }
