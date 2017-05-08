@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Добавление товара</strong></div>
+                <div class="panel-heading"><strong>Редактирование новости</strong></div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{url('news/update')}}">
                         <input id="id" type="hidden" name="id" value="{{$news->id}}">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group{{ $errors->has('cost') ? ' has-error' : '' }}">
-                            <label for="cost" class="col-md-4 control-label">Текст</label>
+                            <label for="cost" class="col-md-4 control-label">Статья</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" required name="content"> {{$news->content}} {{ old('content') }}</textarea>
                                 @if ($errors->has('content'))
