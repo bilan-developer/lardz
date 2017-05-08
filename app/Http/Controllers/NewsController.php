@@ -16,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::all();//
         return view('news.index',['news'=>$news]);
     }
 
@@ -27,6 +27,7 @@ class NewsController extends Controller
      */
     public function create()
     {
+
         return view('news.form.create');
 
     }
@@ -80,7 +81,6 @@ class NewsController extends Controller
     {
 
         $news = News::find($request->id);
-        dd($news);
         $news->title = $request->input('title');
         $news->content = $request->input('content');
         $news->update();
@@ -111,4 +111,19 @@ class NewsController extends Controller
         return redirect('news');
 
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\News  $news
+     * @return \Illuminate\Http\Response
+     */
+    public function error()
+    { dd('dsfhu');
+        $news = News::all();//
+        return view('news.index',['news'=>$news]);
+
+//        return view('errors.error');
+
+    }
+
 }

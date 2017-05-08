@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    Вы авторизированы
+                   У вас нет на это прав
                 </div>
 
                 <div class="panel-body">
