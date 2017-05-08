@@ -9,8 +9,6 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{url('news/update')}}">
                         <input id="id" type="hidden" name="id" value="{{$news->id}}">
-
-                        {{--{{method_field('PUT')}}--}}
                         {{csrf_field()}}
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Заголовок</label>

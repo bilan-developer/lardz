@@ -13,9 +13,9 @@
                                 <label for="name" class="col-md-4 control-label">Заглавие</label>
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="title" required autofocus>
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('title'))
                                         <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong>{{ $errors->first('title') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -23,10 +23,8 @@
 
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description" class="col-md-4 control-label">Статья</label>
-
                                 <div class="col-md-6">
-                                    <input id="content" type="text" class="form-control" name="content" required>
-
+                                    <textarea class="form-control" required name="content"></textarea>
                                     @if ($errors->has('content'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('content') }}</strong>

@@ -5,15 +5,17 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><strong>Добавление товара</strong> <a href="news/create">Добавить</a></div>
-                    @foreach($news as $public)
-                            <div class="panel-body">
-                                <p>{!! $public->title !!}</p>
-                                <p>{!! $public->markdownContent !!}</p>
-                                <a href="news/destroy/{{ $public->id }}">Удалить</a>
-                                <a href="news/edit/{{ $public->id }}">Редактировать</a>
+                        <div class="panel-heading"><strong>Добавление новости</strong> <a href="news/create">Добавить</a></div>
+                        @foreach($news as $public)
+                            <div class="panel-heading">
+                                <div class="panel-body">
+                                    <p>{!! $public->title !!}</p>
+                                    <p>{!! $public->markdownContent !!}</p>
+                                    <a href="news/destroy/{{ $public->id }}">Удалить</a>
+                                    <a href="news/edit/{{ $public->id }}">Редактировать</a>
+                                </div>
                             </div>
-                        @endforeach
+                    @endforeach
                     </div>
                 </div>
             </div>

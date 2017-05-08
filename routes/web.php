@@ -25,6 +25,8 @@ Route::post('/news/update', 'NewsController@update');
 
 Route::middleware('auth')->resource('news','NewsController');
 
+// Доступ User и Admin
+
 Route::get('/news/edit/{id}',[
     'uses' => 'NewsController@edit',
 ])->middleware('accessAdmin', 'accessUser');
@@ -33,6 +35,7 @@ Route::get('news/create',[
     'uses' => 'NewsController@create',
 ])->middleware('accessAdmin', 'accessUser');
 
+// Доступ User и Moderator
 
 Route::get('/news/destroy/{id}',[
     'uses' => 'NewsController@destroy',

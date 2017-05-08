@@ -25,11 +25,9 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create()    {
 
         return view('news.form.create');
-
     }
 
     /**
@@ -40,6 +38,10 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required|max:255',
+            'content' => 'required|min:10',
+        ]);
         $user = Auth::user();
         $user->news()->create($request->all());
         return redirect('news');
@@ -59,49 +61,37 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\News  $news
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $news = News::find($id);
         return view('news.form.edit',['news'=>$news]);
-
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-
+        $this->validate($request,[
+            'title' => 'required|max:255',
+            'content' => 'required|min:10',
+        ]);
         $news = News::find($request->id);
         $news->title = $request->input('title');
         $news->content = $request->input('content');
         $news->update();
         return redirect('news');
-
-//        dd($news);
     }
-//    public function update(Request $request, $id)
-//    {
-//        $product = Product::find($id);
-//        $product->name = $request->input('name');
-//        $product->cost = $request->input('cost');
-//        $product->description = $request->input('description');
-//        $product->update();
-//        return redirect('catalog');
-//    }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\News  $news
+     * @param   $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -109,21 +99,5 @@ class NewsController extends Controller
         $news = News::find($id);
         $news->delete();
         return redirect('news');
-
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
-    public function error()
-    { dd('dsfhu');
-        $news = News::all();//
-        return view('news.index',['news'=>$news]);
-
-//        return view('errors.error');
-
-    }
-
 }
